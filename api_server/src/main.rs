@@ -1,12 +1,14 @@
-use do_it::run;
+use routes::run;
 
 mod error;
 mod prelude;
-mod utils;
+pub mod routes;
+pub mod utils;
 
 #[tokio::main]
 async fn main() -> crate::prelude::Result<()> {
     run().await;
 
     Ok(())
+
 }
