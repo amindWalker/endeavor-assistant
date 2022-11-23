@@ -1,0 +1,14 @@
+@baseUrl = http://localhost:8080
+
+### ACCESS HOME PAGE
+GET {{baseUrl}}
+
+### CREATE USERS
+POST {{baseUrl}}/signin
+Content-Type: application/json
+
+{
+    "email": "new_user@email.com",
+    "password": "valid_password",
+    "username": "new_username"
+}
