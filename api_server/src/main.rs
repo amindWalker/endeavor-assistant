@@ -1,14 +1,11 @@
-use routes::run;
+use api_shared::prelude::LibError;
 
-mod error;
-mod prelude;
 pub mod routes;
-pub mod utils;
+pub mod services;
 
 #[tokio::main]
-async fn main() -> crate::prelude::Result<()> {
-    run().await;
+async fn main() -> Result<(), LibError> {
+    routes::run_server().await?;
 
     Ok(())
-
 }
