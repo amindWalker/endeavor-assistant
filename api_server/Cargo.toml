@@ -7,12 +7,10 @@ edition = "2021"
 
 [dependencies]
 api_shared = { path = "../api_shared" }
-axum = { version = "0.6.0-rc.5", features = ["headers", "http2", "multipart"]}
+axum = { version = "0.6.0-rc.5", features = ["headers", "http2", "multipart"] }
 axum-macros = "0.2.3"
 thiserror = "1"
-tokio = { version = "1", features = ["full"]}
+tokio = { version = "1", features = ["full"] }
+tower-http = { version = "0.3.4", features = ["cors"] }
 serde = { version = "1", features = ["derive"] }
-serde_json = "1"
 miette = { version = "5.4.1", features = ["fancy"] }
-
-[dev-dependencies]

@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  database:
+    image: postgres:latest
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      - POSTGRES_PASSWORD=keyoarbcat
+    ports:
+      - 5432:5432
+    healthcheck:
+      test: psql -U postgres -q -d postgres -c "SELECT 'ready';"
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 5s
+
+volumes:
+  db-data:

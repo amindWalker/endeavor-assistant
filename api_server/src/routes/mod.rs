@@ -1,18 +1,25 @@
 use api_shared::prelude::LibError;
 use axum::{
+    http::Method,
     response::Html,
     routing::{get, post},
     Router,
 };
+use tower_http::cors::{Any, CorsLayer};
 
 use self::users::post_users_route;
 
 pub mod users;
 
 pub async fn run_server() -> Result<(), LibError> {
+    let cors = CorsLayer::new()
+        .allow_methods([Method::GET, Method::POST])
+        .allow_origin(Any);
+
     let app = Router::new()
         .route("/", get(default_path))
-        .route("/signin", post(post_users_route));
+        .route("/signin", post(post_users_route))
+        .layer(cors);
 
     axum::Server::bind(&"0.0.0.0:8080".parse().unwrap())
         .serve(app.into_make_service())
@@ -26,7 +33,7 @@ pub async fn default_path() -> Html<&'static str> {
     Html(
         "
     <div style='
-        align='center'
+        align: center;
         border: 1px dashed red;
         border-radius: 16px;
         padding: 16px;

@@ -51,6 +51,8 @@ impl fmt::Display for UserModel {
     }
 }
 
+// SECTION: TESTS...............................................................
+
 #[cfg(test)]
 mod tests {
     use crate::services::{mock_db_user, UserModel};
