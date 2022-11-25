@@ -1,20 +1,22 @@
-version: "3.9"
 services:
   database:
-    image: postgres:latest
+    image: docker.io/postgres
     volumes:
       - db-data:/var/lib/postgresql/data
       - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
-      - POSTGRES_PASSWORD=keyoarbcat
+      POSTGRES_USER: $PG_USER
+      POSTGRES_PASSWORD: $PG_PASSWORD
+      POSTGRES_DB: $PG_DB_NAME
     ports:
       - 5432:5432
-    healthcheck:
-      test: psql -U postgres -q -d postgres -c "SELECT 'ready';"
-      interval: 30s
-      timeout: 10s
-      retries: 5
-      start_period: 5s
+  admin:
+    image: docker.io/adminer
+    restart: unless-stopped
+    depends_on:
+      - database
+    ports:
+      - 8080:8080
 
 volumes:
   db-data:
