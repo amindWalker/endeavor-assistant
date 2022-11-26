@@ -7,7 +7,7 @@ edition = "2021"
 
 [dependencies]
 api_shared = { path = "../api_shared" }
-axum = { version = "0.6.0-rc.5", features = ["headers", "http2", "multipart"] }
+axum = { version = "0.6", features = ["headers", "http2", "multipart"] }
 axum-macros = "0.2.3"
 thiserror = "1"
 tokio = { version = "1", features = ["full"] }

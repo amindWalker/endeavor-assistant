@@ -21,7 +21,7 @@ pub async fn run_server() -> Result<(), LibError> {
         .route("/signin", post(post_users_route))
         .layer(cors);
 
-    const HOST: &str = "locahost";
+    const HOST: &str = "0.0.0.0";
     const PORT: &str = "3000";
     let listen_host_port = format!("{HOST}:{PORT}");
     axum::Server::bind(&listen_host_port.parse().unwrap())
