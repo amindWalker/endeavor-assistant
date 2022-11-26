@@ -26,7 +26,7 @@ Business Planner
  - [ ] Finance Tools
  - [ ] Notepad (Markdown-like)
  - [ ] Progressive analysis (hints to improve your goals)
- - [ ] (Optional) Explore how to leverage the new Axum WebAssembly feature with CloudFlare Workers or any use case in which a heavy container (like Docker/Linux) could be replaced by WASM/WASI lightweight-sandbox environment.
+ - [ ] (Optional) Explore how to leverage the new Axum WebAssembly feature (introduced in v0.6) with CloudFlare Workers or any use case in which a heavy container (like Docker/Linux) could be replaced by WASM/WASI lightweight-sandbox environment.
 
 [^1]: [Data-first and data-last: a comparison](https://www.javierchavarri.com/data-first-and-data-last-a-comparison/). Javier Chávarri, May 10, 2019.
 [^2]: [Traits: Defining Shared Behavior](https://doc.rust-lang.org/book/ch10-02-traits.html). The Official Rust Programming Language Book.
@@ -36,6 +36,6 @@ Business Planner
 [^6]: [Rust in WebAssembly](https://www.fermyon.com/wasm-languages/rust). Fermyon Blog.
 [^7]: [Sustainability with Rust](https://aws.amazon.com/blogs/opensource/sustainability-with-rust/). AWS Open Source Blog, 11 Feb, 2022.
 [^8]: [How we built Pingora, the proxy that connects Cloudflare to the Internet](https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet/).
-[^8]: [The Cargo Book](https://doc.rust-lang.org/cargo/). The Official Cargo Book.
-[^9]: [IDE Integration Using `rust-analyzer`](https://doc.rust-lang.org/book/appendix-04-useful-development-tools.html#ide-integration-using-rust-analyzer). The Official Rust Programming Language Book.
+[^9]: [The Cargo Book](https://doc.rust-lang.org/cargo/). The Official Cargo Book.
+[^10]: [IDE Integration Using `rust-analyzer`](https://doc.rust-lang.org/book/appendix-04-useful-development-tools.html#ide-integration-using-rust-analyzer). The Official Rust Programming Language Book.
 
