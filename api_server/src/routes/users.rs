@@ -2,9 +2,9 @@
 use api_shared::prelude::LibError;
 use axum::{Json};
 // local modules
-use crate::services::UserModel;
+use crate::services::UserForm;
 
-pub async fn post_users_route(Json(body): Json<UserModel>) -> Result<&'static str, LibError> {
+pub async fn post_users_route(Json(body): Json<UserForm>) -> Result<&'static str, LibError> {
     body.create_user_service()?;
 
     Ok("Success: account created")

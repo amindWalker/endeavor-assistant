@@ -5,22 +5,22 @@ use std::fmt;
 use api_shared::prelude::LibError;
 
 #[derive(Debug, Deserialize)]
-pub struct UserModel {
+pub struct UserForm {
     pub email: String,
     pub password: String,
     pub username: String,
 }
 
 // TODO: replace mock data with PostgreSQL
-pub fn mock_db_user() -> UserModel {
-    UserModel {
+pub fn mock_db_user() -> UserForm {
+    UserForm {
         email: "user@email.com".to_string(),
         password: "valid_password".to_string(),
         username: "username".to_string(),
     }
 }
 
-impl UserModel {
+impl UserForm {
     pub fn create_user_service(self) -> Result<Self, LibError> {
         let is_email_taken = self.email.eq(&mock_db_user().email);
         if is_email_taken {
@@ -32,7 +32,7 @@ impl UserModel {
         if is_username_taken {
             return Err(LibError::UserTaken);
         }
-        let is_password_invalid = self.password.len() < 7;
+        let is_password_invalid = self.password.len() < 8;
         if is_password_invalid {
             return Err(LibError::PasswordInvalid);
         }
@@ -45,7 +45,7 @@ impl UserModel {
     }
 }
 
-impl fmt::Display for UserModel {
+impl fmt::Display for UserForm {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         fmt::Display::fmt(&self, f)
     }
@@ -55,17 +55,17 @@ impl fmt::Display for UserModel {
 
 #[cfg(test)]
 mod tests {
-    use crate::services::{mock_db_user, UserModel};
+    use crate::services::{mock_db_user, UserForm};
 
-    fn mock_existing_user() -> UserModel {
-        UserModel {
+    fn mock_existing_user() -> UserForm {
+        UserForm {
             email: "user@email.com".to_string(),
             password: "valid_password".to_string(),
             username: "username".to_string(),
         }
     }
-    fn mock_new_user() -> UserModel {
-        UserModel {
+    fn mock_new_user() -> UserForm {
+        UserForm {
             email: "new_user@email.com".to_string(),
             password: "invalid".to_string(),
             username: "new_username".to_string(),
@@ -74,7 +74,7 @@ mod tests {
 
     mod test_create_user_service {
         use super::{mock_db_user, mock_existing_user};
-        use crate::services::{tests::mock_new_user, UserModel};
+        use crate::services::{tests::mock_new_user, UserForm};
 
         #[test]
         fn test_email_taken() -> miette::Result<()> {
@@ -129,7 +129,7 @@ mod tests {
 
         #[test]
         fn test_password_valid() -> miette::Result<()> {
-            let valid_password = UserModel {
+            let valid_password = UserForm {
                 password: "valid_password".to_string(),
                 ..mock_new_user()
             };

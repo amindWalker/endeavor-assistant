@@ -10,7 +10,7 @@ Business Planner
 * The original `TypeScript` repository: [do-it-ts](https://github.com/amindWalker/do-it-ts)
 * The expected result from this:
     > - [x] `Rust` takes a "Data First" approach, making you take better decisions upfront while giving your IDE more information about your code (i.e. better integration with code completions) delivering incredible Developer Experience (DX) along the way.[^1]
-    > - [x] There is **no inheritance** in `Rust` by default. This is another way to avoid complex structures which lead to hard-to-catch bugs in run_servertime. If you need inheritance you can mimic this behavior by implementing `Traits`.[^2]
+    > - [x] There is **no inheritance** in `Rust` by default. This is another way to avoid complex structures which lead to hard-to-catch bugs in runtime. If you need inheritance you can mimic this behavior by implementing `Traits`.[^2]
     > - [x] `Rust` + `WebAssembly` provides faster, more secure, and predictable behavior (at compile-time) applications.[^3]
     > - [ ] Better maintainable codebase in the medium or long term.[^4]
     > - [ ] Front-end and back-end in `Rust` keep high-level abstractions with readable modern functional programming concepts comparable to or better than `TypeScript`.[^5]
