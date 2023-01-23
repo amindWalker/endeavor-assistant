@@ -5,6 +5,7 @@ use axum::{
     routing::{get, post},
     Router,
 };
+use dioxus::prelude::*;
 use tower_http::cors::{Any, CorsLayer};
 
 use self::users::post_users_route;
@@ -33,17 +34,37 @@ pub async fn run_server() -> Result<(), LibError> {
 }
 
 pub async fn default_path() -> Html<&'static str> {
-    Html(
-        "
-    <div style='
-        align: center;
-        border: 1px dashed red;
-        border-radius: 16px;
-        padding: 16px;
-        height: 100vh;
-    '>
-        <h1 style='color: forestgreen;'>Do It Manager</h1>
-        <p>{tasks}</p>
-    </div>",
-    )
+    let mut state = use_state(&cx, || true);
+
+    let app = cx.render(rsx!(
+        main {
+            class: "w-full h-full",
+            "bg": if *state.get() { "black" } else { "white" },
+            "text": "white",
+            "hello there",
+            span {
+                "state: {state}"
+            }
+            button {
+                onclick: move |_| {
+                    state.set(!state);
+                },
+                "toggle"
+            }
+        }
+    ));
+    dioxus_web::launch(app);
+    // Html(
+    //     "
+    // <div style='
+    //     align: center;
+    //     border: 1px dashed red;
+    //     border-radius: 16px;
+    //     padding: 16px;
+    //     height: 100vh;
+    // '>
+    //     <h1 style='color: forestgreen;'>Do It Manager</h1>
+    //     <p>{tasks}</p>
+    // </div>",
+    // )
 }

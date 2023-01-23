@@ -1,0 +1,3 @@
+[submodule "api_server/unocss-attributify-rust"]
+	path = api_server/unocss-attributify-rust
+	url = https://github.com/campbellcole/unocss-attributify-rust

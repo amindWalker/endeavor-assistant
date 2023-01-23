@@ -14,3 +14,5 @@ tokio = { version = "1", features = ["full"] }
 tower-http = { version = "0.3.4", features = ["cors"] }
 serde = { version = "1", features = ["derive"] }
 miette = { version = "5.5.0", features = ["fancy"] }
+dioxus = "0.3.1"
+dioxus-web = "0.3.0"
