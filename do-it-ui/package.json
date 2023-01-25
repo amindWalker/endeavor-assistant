@@ -1,0 +1,13 @@
+{
+	"scripts": {
+		"dev:css": "unocss 'src/**/*.rs' --out-file=dist/uno.css --watch",
+		"build:css": "unocss 'src/**/*.rs' --out-file=dist/styles/uno.css"
+	},
+	"devDependencies": {
+		"@iconify/json": "^2.2.11",
+		"@unocss/cli": "^0.48.4",
+		"unocss": "^0.48.4",
+		"unocss-preset-theme": "^0.3.1",
+		"vite": "^4.0.4"
+	}
+}

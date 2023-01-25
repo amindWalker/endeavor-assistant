@@ -1,11 +1,9 @@
 use api_shared::prelude::LibError;
 use axum::{
     http::Method,
-    response::Html,
     routing::{get, post},
     Router,
 };
-use dioxus::prelude::*;
 use tower_http::cors::{Any, CorsLayer};
 
 use self::users::post_users_route;
@@ -22,9 +20,11 @@ pub async fn run_server() -> Result<(), LibError> {
         .route("/signin", post(post_users_route))
         .layer(cors);
 
-    const HOST: &str = "0.0.0.0";
-    const PORT: &str = "3000";
+    const HOST: &str = "127.0.0.1";
+    const PORT: &str = "3030";
     let listen_host_port = format!("{HOST}:{PORT}");
+
+    println!("\n\n[::] Server running on http://{HOST}:{PORT}");
     axum::Server::bind(&listen_host_port.parse().unwrap())
         .serve(app.into_make_service())
         .await
@@ -33,38 +33,6 @@ pub async fn run_server() -> Result<(), LibError> {
     Ok(())
 }
 
-pub async fn default_path() -> Html<&'static str> {
-    let mut state = use_state(&cx, || true);
-
-    let app = cx.render(rsx!(
-        main {
-            class: "w-full h-full",
-            "bg": if *state.get() { "black" } else { "white" },
-            "text": "white",
-            "hello there",
-            span {
-                "state: {state}"
-            }
-            button {
-                onclick: move |_| {
-                    state.set(!state);
-                },
-                "toggle"
-            }
-        }
-    ));
-    dioxus_web::launch(app);
-    // Html(
-    //     "
-    // <div style='
-    //     align: center;
-    //     border: 1px dashed red;
-    //     border-radius: 16px;
-    //     padding: 16px;
-    //     height: 100vh;
-    // '>
-    //     <h1 style='color: forestgreen;'>Do It Manager</h1>
-    //     <p>{tasks}</p>
-    // </div>",
-    // )
+pub async fn default_path() -> &'static str {
+    "Home"
 }
