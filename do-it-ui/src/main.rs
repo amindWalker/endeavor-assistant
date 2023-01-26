@@ -3,7 +3,7 @@ mod components;
 mod pages;
 
 use crate::components::{Footer, NavBar};
-use crate::pages::{NewTask, Home, Settings, SignIn, SignUp};
+use crate::pages::{Home, NewTask, Settings, SignIn, SignUp};
 use dioxus::prelude::*;
 use dioxus_router::{Route, Router};
 
@@ -17,17 +17,26 @@ fn main() {
 
 fn App(cx: Scope) -> Element {
     cx.render(rsx!(
-        main {
-            class: "@apply all:transition-400 all:transition-all grid auto-cols-max",
-
-            Router {
-                NavBar {}
-                Route { to: "/", Home {} }
-                Route { to: "/settings", Settings {} }
-                Route { to: "/signup", SignUp {} }
-                Route { to: "/signin", SignIn {} }
-                Route { to: "/new_task", NewTask {} }
-                Footer {}
+        Router {
+            div {
+                class: "@apply top-notification",
+                "NOTE: APP UNDER HEAVY DEVELOPMENT AND CHANGES ARE DUE"
+            }
+            main {
+                class: "main-std",
+                div {
+                    class: "max-w-max col-end-1",
+                    NavBar {}
+                }
+                div {
+                    class: "max-w-full col-start-1 col-end-6",
+                    Route { to: "/", Home {} }
+                    Route { to: "/new_task", NewTask {} }
+                    Route { to: "/settings", Settings {} }
+                    Route { to: "/signin", SignIn {} }
+                    Route { to: "/signup", SignUp {} }
+                    Footer {}
+                }
             }
         }
     ))

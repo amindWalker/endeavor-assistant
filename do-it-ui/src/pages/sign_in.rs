@@ -12,9 +12,9 @@ pub fn SignIn(cx: Scope) -> Element {
 
     cx.render(rsx! {
         div {
-            class: "@apply auth",
+            class: "@apply signin",
             div {
-                class: " ",
+                class: "",
                 div {
                     class: "signin-section",
                     div {
@@ -24,18 +24,19 @@ pub fn SignIn(cx: Scope) -> Element {
                             "Sign in"
                         }
                         p {
-                            class: "text-para",
+                            class: "",
                             Link { to: "/signup", "Don't have an account?" }
                         }
 
                         hr {}
 
                         ul {
-                            class: "error-messages set-visible",
+                            class: "error-messages invisible",
                             li { "Invalid credentials" }
                         }
 
                         form {
+                            class: "grid gap4",
                             FormInput {
                                 oninput: move |s: FormData| email.set(s.value),
                                 placeholder: "Email".to_string()

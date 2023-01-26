@@ -10,49 +10,54 @@ pub fn NavBar(cx: Scope) -> Element {
     };
 
     cx.render(rsx! {
-        header {
-            class: "@apply col-start-1 text-center p4 text-red-600 animate-pulse",
-            "Note: app under heavy development and changes are due."
-        }
-        nav {
-            class: "navbar col-end-1 mt8 ml4 drop-shadow-xl",
+        div {
+            class: "@apply navbar md:ml8 col-end-1 drop-shadow-xl mt4 max-w-max",
             Link {
-                class: "btn-primary text-center p4", to: "/",
-                "DO IT MANAGER"
+                class: "flex btn-primary items-center justify-center", to: "/",
+                "Do It Manager"
             },
             menu {
-                class: "base mx4 nav-list grid",
+                class: "base-container nav-list max-w-max",
                     Link {
-                        class: "nav-item btn-transparent flex items-center justify-start",
-                        to: "/",
+                        class: "nav-item btn-transparent flex items-center", to: "/",
                         i { class: "i-mdi:monitor-dashboard mr1" }
-                        "Dashboard"
+                        span {
+                            "Dashboard"
+                        }
                     }
                     Link {
-                        class: "nav-item btn-transparent flex items-center justify-start", to: "/new_task",
+                        class: "nav-item btn-transparent flex items-center", to: "/new_task",
                         i { class: "i-line-md:check-list-3-filled mr1" },
-                        "Tasks",
+                        span {
+                            "Tasks"
+                        }
                     }
                     Link {
-                        class: "nav-item btn-transparent flex items-center justify-start", to: "/settings",
+                        class: "nav-item btn-transparent flex items-center", to: "/settings",
                         i { class: "i-line-md:switch-filled mr1" },
-                        "Settings"
+                        span {
+                            "Settings"
+                        }
                     }
                     Link {
-                        class: "nav-item btn-transparent flex items-center justify-start", to: "/signin",
+                        class: "nav-item btn-transparent flex items-center", to: "/signin",
                         i { class: "i-line-md:account-small mr1" },
-                        "Sign in"
+                        span {
+                            "Sign In"
+                        }
                     }
                     Link {
-                        class: "nav-item btn-transparent flex items-center justify-start text-left", to: "/signup",
+                        class: "nav-item btn-transparent flex items-center", to: "/signup",
                         i { class: "i-line-md:clipboard-check mr1" },
-                        "Sign up"
+                        span {
+                            "Sign Up"
+                        }
                     }
 
                 hr { class: "drop-shadow-md mt4" }
 
                 button {
-                    class: "cursor-pointer flex items-center justify-center text-lg p4 text-orange-600 hover:brightness-150",
+                    class: "cursor-pointer w-full p8 -mb2 text-orange-600 hover:brightness-150",
                     onclick: move |_| {
                         state.set(!state);
                     },

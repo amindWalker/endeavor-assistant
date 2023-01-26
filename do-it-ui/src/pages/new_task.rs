@@ -12,11 +12,11 @@ pub fn NewTask(cx: Scope) -> Element {
     let tags = use_state(&cx, String::new);
     cx.render(rsx! {
         div {
-            class: "editor-mode",
+            class: "@apply editor-mode",
             div {
-                class: " page",
+                class: "",
                 h1 {
-                    class: "text-xs-center",
+                    class: "",
                     "New Task"
                 }
 
@@ -28,6 +28,7 @@ pub fn NewTask(cx: Scope) -> Element {
                     div {
                         class: "form-data",
                         form {
+                            class: "grid gap4",
                             FormInput {
                                 oninput: move |s: FormData| title.set(s.value),
                                 placeholder: "Task title".to_string()
@@ -39,7 +40,8 @@ pub fn NewTask(cx: Scope) -> Element {
                             FormTextarea {
                                 oninput: move |s: FormData| content.set(s.value),
                                 placeholder: "Task description".to_string(),
-                                rows: 8
+                                rows: 16,
+                                cols: 32
                             }
                             FormInput {
                                 oninput: move |s: FormData| tags.set(s.value),

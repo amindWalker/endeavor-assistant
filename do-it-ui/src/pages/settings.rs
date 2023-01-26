@@ -14,18 +14,19 @@ pub fn Settings(cx: Scope) -> Element {
 
     cx.render(rsx! {
         div {
-            class: "settings",
+            class: "@apply settings",
             div {
-                class: " page",
+                class: "",
                 div {
-                    class: "col-md-6 offset-md-3 col-xs-12",
+                    class: "",
                     h1 {
-                        class: "text-xs-center", "Your Settings"
+                        class: "", "Your Settings"
                     }
 
                     hr {}
 
                     form {
+                        class: "grid gap4",
                         FormInput{
                             oninput: move |s: FormData| profilePictureURL.set(s.value),
                             placeholder: "Profile picture".to_string()
@@ -36,7 +37,9 @@ pub fn Settings(cx: Scope) -> Element {
                         }
                         FormTextarea{
                             oninput: move |s: FormData| biography.set(s.value),
-                            placeholder: "Share details about yourself (optional)".to_string()
+                            placeholder: "Share details about yourself (optional)".to_string(),
+                            rows: 16,
+                            cols: 32
                         }
                         FormInput {
                             oninput: move |s: FormData| email.set(s.value),

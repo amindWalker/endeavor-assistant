@@ -13,7 +13,7 @@ pub fn SignUp(cx: Scope) -> Element {
 
     cx.render(rsx! {
         div {
-            class: "auth",
+            class: "@apply signup",
             div {
                 class: " ",
                 div {
@@ -25,18 +25,19 @@ pub fn SignUp(cx: Scope) -> Element {
                             "Sign up"
                         }
                         p {
-                            class: "text-para",
+                            class: "",
                             Link { to: "/signin", "Have an account?" }
                         }
                         br {}
                         br {}
 
                         ul {
-                            class: "error-messages set-visible",
+                            class: "error-messages invisible",
                             li { "That email is already taken" }
                         }
 
                         form {
+                            class: "grid gap4",
                             FormInput {
                                 oninput: move |s: FormData| name.set(s.value),
                                 placeholder: "Your Name".to_string()
