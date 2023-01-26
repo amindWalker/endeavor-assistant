@@ -4,9 +4,9 @@ use dioxus_router::Link;
 pub fn Footer(cx: Scope) -> Element {
     cx.render(rsx! {
         footer {
-            class: "@apply flex justify-center",
+            class: "@apply col-end-2 flex justify-center mt8",
             div {
-                class: "container",
+                class: "",
                 span {
                     class: "attribution flex items-center justify-center",
                     "Full Stack application ported from TypeScript to pure Rust |",

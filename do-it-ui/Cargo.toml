@@ -6,13 +6,26 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-console_error_panic_hook = "0.1.7"
 dioxus = "0.3.1"
 dioxus-router = "0.3.0"
-dioxus-web = "0.3.0"
 log = "0.4.17"
+# Dioxus Web with WASM and all available Web APIs
+console_error_panic_hook = "0.1.7"
+dioxus-web = "0.3.0"
 wasm-logger = "0.2.0"
+# Dioxus LiveView with Axum and WebSockets but limited Web APIs
+# axum = { version = "0.6.4", features = ["ws"] }
+# dioxus-liveview = { version = "0.3.0", features = ["axum"] }
+# shuttle-service = { version = "0.8.0", features = ["web-axum"] }
+# sync_wrapper = "0.1.1"
+# shuttle-static-folder = "0.8.0"
+# tower-http = { version = "0.3.5", features = ["fs"] }
 
+# specific patch to fix tokio dependency mismatch with shuttle-service
+[patch.crates-io]
+dioxus-liveview = { path = "/home/dev/.cargo/registry/src/github.com-1ecc6299db9ec823/dioxus-liveview-0.3.0" }
+
+# optimize WASM for size
 [profile.release]
 opt-level = "z"
 debug = false

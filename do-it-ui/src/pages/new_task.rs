@@ -14,7 +14,7 @@ pub fn NewTask(cx: Scope) -> Element {
         div {
             class: "editor-mode",
             div {
-                class: "container page",
+                class: " page",
                 h1 {
                     class: "text-xs-center",
                     "New Task"

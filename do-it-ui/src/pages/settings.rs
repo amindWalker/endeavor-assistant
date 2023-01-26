@@ -16,7 +16,7 @@ pub fn Settings(cx: Scope) -> Element {
         div {
             class: "settings",
             div {
-                class: "container page",
+                class: " page",
                 div {
                     class: "col-md-6 offset-md-3 col-xs-12",
                     h1 {

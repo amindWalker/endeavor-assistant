@@ -6,6 +6,6 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-axum = "0.6.3"
+axum = "0.6.4"
 miette = { version = "5.5.0", features = ["fancy"]}
 thiserror = "1"

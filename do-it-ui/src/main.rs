@@ -9,7 +9,7 @@ use dioxus_router::{Route, Router};
 
 fn main() {
     // Init debug tool for WebAssembly.
-    // wasm_logger::init(wasm_logger::Config::default());
+    wasm_logger::init(wasm_logger::Config::default());
     console_error_panic_hook::set_once();
 
     dioxus_web::launch(App);
@@ -18,7 +18,7 @@ fn main() {
 fn App(cx: Scope) -> Element {
     cx.render(rsx!(
         main {
-            class: "@apply all:transition-400 grid grid-flow-col max-w-max",
+            class: "@apply all:transition-400 all:transition-all grid auto-cols-max",
 
             Router {
                 NavBar {}

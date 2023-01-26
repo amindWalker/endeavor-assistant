@@ -9,10 +9,9 @@ pub struct FormButtonProps<'a> {
 pub fn FormButton<'a>(cx: Scope<'a, FormButtonProps<'a>>) -> Element {
     cx.render(rsx! {
         button {
-            // TODO: default button component
-            class: "btn",
+            class: "btn-primary",
             r#type: "button",
-            onclick: move |evt| cx.props.onclick.call(evt),
+            onclick: move |e| cx.props.onclick.call(e),
             "{cx.props.label}"
         }
     })

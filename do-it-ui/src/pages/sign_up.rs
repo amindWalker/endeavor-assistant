@@ -15,7 +15,7 @@ pub fn SignUp(cx: Scope) -> Element {
         div {
             class: "auth",
             div {
-                class: "container ",
+                class: " ",
                 div {
                     class: "signup-section",
                     div {

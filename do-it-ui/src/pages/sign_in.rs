@@ -12,9 +12,9 @@ pub fn SignIn(cx: Scope) -> Element {
 
     cx.render(rsx! {
         div {
-            class: "auth",
+            class: "@apply auth",
             div {
-                class: "container ",
+                class: " ",
                 div {
                     class: "signin-section",
                     div {
