@@ -3,7 +3,7 @@ use dioxus::{
     prelude::*,
 };
 
-use crate::components::{FormButton, FormInput, FormTextarea};
+use crate::{components::{FormButton, FormInput, FormTextarea}, DarkMode};
 
 pub fn Settings(cx: Scope) -> Element {
     let profilePictureURL = use_state(&cx, String::new);
@@ -12,19 +12,32 @@ pub fn Settings(cx: Scope) -> Element {
     let email = use_state(&cx, String::new);
     let password = use_state(&cx, String::new);
 
+    let dark_mode = use_shared_state::<DarkMode>(cx).unwrap();
+    let is_dark = dark_mode.read().0;
+    let dark = if is_dark {"dark"} else {""};
+
     cx.render(rsx! {
         div {
-            class: "@apply settings",
+            class: "@apply settings md:w-screen-sm lg:w-screen-md grid md:p8 mx6 md:mx16 md:ml32 xl:ml40 rounded-xl shadow-2xl",
+            h2 {
+                class: "text-4xl font-black text-true-gray-600 p2 mix-blend-exclusion text-center",
+                "Settings"
+            }
             div {
-                class: "",
-                div {
-                    class: "",
-                    h1 {
-                        class: "", "Your Settings"
+                class: "grid p8 base-container{dark}",
+                aside {
+                    class: "header-wrapper",
+                    label {
+                        class: "h-title-header", "Profile"
+                    },
+                    p {
+                        class: "p-description",
+                        "Customize your profile settings"
                     }
+                }
 
-                    hr {}
-
+                section {
+                    class: "form-data p8 shadow-inner my4 rounded-xl",
                     form {
                         class: "grid gap4",
                         FormInput{
@@ -37,8 +50,7 @@ pub fn Settings(cx: Scope) -> Element {
                         }
                         FormTextarea{
                             oninput: move |s: FormData| biography.set(s.value),
-                            placeholder: "Share details about yourself (optional)".to_string(),
-                            rows: 16,
+                            placeholder: "Share details about yourself".to_string(),
                             cols: 32
                         }
                         FormInput {

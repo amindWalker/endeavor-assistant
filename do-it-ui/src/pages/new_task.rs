@@ -2,61 +2,70 @@ use dioxus::{
     events::{FormData, MouseEvent},
     prelude::*,
 };
-
-use crate::components::{FormButton, FormInput, FormTextarea};
+use crate::{components::{FormButton, FormInput, FormTextarea}, DarkMode, ToastMessage};
 
 pub fn NewTask(cx: Scope) -> Element {
-    let title = use_state(&cx, String::new);
-    let summary = use_state(&cx, String::new);
-    let content = use_state(&cx, String::new);
-    let tags = use_state(&cx, String::new);
+    let title = use_state(cx, String::new);
+    let summary = use_state(cx, String::new);
+    let content = use_state(cx, String::new);
+    let tags = use_state(cx, String::new);
+
+    let dark_mode = use_shared_state::<DarkMode>(cx).unwrap();
+    let is_dark = dark_mode.read().0;
+    let dark = if is_dark {"dark"} else {""};
+
+    let toast_message = use_shared_state::<ToastMessage>(cx).unwrap();
+
     cx.render(rsx! {
         div {
-            class: "@apply editor-mode",
+            class: "@apply tasks md:w-screen-sm lg:w-screen-md grid md:p8 mx6 md:mx16 md:ml32 xl:ml40 rounded-xl shadow-2xl",
+            h2 {
+                class: "text-4xl font-black text-true-gray-600 p2 mix-blend-exclusion text-center",
+                "Task Editor"
+            }
             div {
-                class: "",
-                h1 {
-                    class: "",
-                    "New Task"
+                class: "grid p8 base-container{dark}",
+                aside {
+                    class: "header-wrapper",
+                    label {
+                        class: "h-title-header", "Create Task"
+                    },
+                    p {
+                        class: "p-description",
+                        "Fill the forms with your desired goals for the week"
+                    }
                 }
 
-                hr {}
-
-                div {
-                    class: "task-section",
-
-                    div {
-                        class: "form-data",
-                        form {
-                            class: "grid gap4",
-                            FormInput {
-                                oninput: move |s: FormData| title.set(s.value),
-                                placeholder: "Task title".to_string()
-                            }
-                            FormInput {
-                                oninput: move |s: FormData| summary.set(s.value),
-                                placeholder: "What's this task about?".to_string()
-                            }
-                            FormTextarea {
-                                oninput: move |s: FormData| content.set(s.value),
-                                placeholder: "Task description".to_string(),
-                                rows: 16,
-                                cols: 32
-                            }
-                            FormInput {
-                                oninput: move |s: FormData| tags.set(s.value),
-                                placeholder: "Enter tags".to_string(),
-
-                            }
-                            div {
-                                class: "tag-list"
-                            }
-                            FormButton {
-                                onclick: move |_: MouseEvent| {
-                                    log::info!("[NewTask] button clicked. title: {}", title);
-                                },
-                                label: "Publish Task".to_string()
-                            }
+                section {
+                    class: "form-data p8 shadow-inner my4 rounded-xl",
+                    form {
+                        class: "grid gap4",
+                        FormInput {
+                            oninput: move |s: FormData| title.set(s.value),
+                            placeholder: "Task title".to_string()
+                        }
+                        FormInput {
+                            oninput: move |s: FormData| summary.set(s.value),
+                            placeholder: "What is your goal about?".to_string()
+                        }
+                        FormTextarea {
+                            oninput: move |s: FormData| content.set(s.value),
+                            placeholder: "Task description".to_string(),
+                            cols: 32
+                        }
+                        FormInput {
+                            oninput: move |s: FormData| tags.set(s.value),
+                            placeholder: "Enter tags related to this task".to_string(),
+                        }
+                        div {
+                            class: "tag-list"
+                        }
+                        FormButton {
+                            onclick: move |_: MouseEvent| {
+                                log::info!("[TOAST] wild toast appears.");
+                                toast_message.write().0 = r"SUCESS! Check your new task: {dashboard}";
+                            },
+                            label: "Add".to_string(),
                         }
                     }
                 }

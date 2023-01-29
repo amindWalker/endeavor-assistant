@@ -23,7 +23,7 @@ title = "Dioxus | An elegant GUI library for Rust"
 
 index_on_404 = true
 
-watch_path = ["src"]
+watch_path = ["."]
 
 # include `assets` in web platform
 [web.resource]
@@ -31,7 +31,7 @@ watch_path = ["src"]
 # CSS style file
 style = [
     "uno.css",
-    "https://cdn.jsdelivr.net/npm/@unocss/reset/tailwind.min.css",
+    "tailwind.min.css",
 ]
 
 # Javascript code file

@@ -1,5 +1,7 @@
 use dioxus::{events::FormData, prelude::*};
 
+use crate::DarkMode;
+
 #[derive(Props)]
 pub struct FormInputProps<'a> {
     oninput: EventHandler<'a, FormData>,
@@ -10,11 +12,12 @@ pub struct FormInputProps<'a> {
 
 pub fn FormInput<'a>(cx: Scope<'a, FormInputProps<'a>>) -> Element {
     let place_holder = cx.props.placeholder.clone().unwrap_or_default();
+
     cx.render(rsx! {
         fieldset {
-            class: "form-group grid gap4",
+            class: "@apply grid gap4",
             input {
-                class: "text-field",
+                class: "list-itemdark bg-white bg-opacity-0",
                 r#type: "text",
                 oninput: move |e| cx.props.oninput.call(e.data.as_ref().clone()),
                 placeholder: "{place_holder}",

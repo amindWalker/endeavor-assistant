@@ -1,20 +1,33 @@
 use dioxus::prelude::*;
 use dioxus_router::Link;
 
+use crate::DarkMode;
+
 pub fn Home(cx: Scope) -> Element {
+    let dark_mode = use_shared_state::<DarkMode>(cx).unwrap();
+    let is_dark = dark_mode.read().0;
+
+    let dark = if is_dark {"dark"} else {""};
+
+    let task_item_theme = if is_dark {"list-itemdark"} else {"list-item"};
+
     cx.render(rsx! {
         div {
-            class: "@apply home w-full p8 rounded-xl shadow-2xl",
+            class: "@apply home col-span-full md:p8 mx6 md:mx16 md:ml32 xl:ml40 rounded-xl shadow-2xl",
+            h2 {
+                class: "text-4xl font-black text-true-gray-600 p2 mix-blend-exclusion text-center",
+                "Dashboard"
+            }
             div {
-                class: "grid gap8 place-items-center grid-cols-1 xl:grid-cols-2 w-full",
+                class: "grid gap4 md:gap8 place-items-center xl:grid-cols-2 w-full",
                 section {
-                    class: "task-section base-container w-full h-full",
+                    class: "task-section base-container{dark} w-full h-full",
                     div {
-                        class: "task-meta p4 lg:p8",
+                        class: "task-meta p8 lg:p8",
                         aside {
-                            class: "border border-dotted rounded p4",
+                            class: "header-wrapper",
                             label {
-                                class: "text-xl text-orange-600 font-bold",
+                                class: "h-title-header",
                                 "Tasks"
                             },
                             h2 {
@@ -27,9 +40,9 @@ pub fn Home(cx: Scope) -> Element {
                             }
                         }
                         ul {
-                            class: "task-block mt4",
+                            class: if is_dark {"block-wrapperdark mt4"} else {"block-wrapper mt4"},
                             li {
-                                class: "task-list-item",
+                                class: "{task_item_theme}",
                                 input {
                                     class: "mr4",
                                     r#type: "checkbox",
@@ -40,7 +53,7 @@ pub fn Home(cx: Scope) -> Element {
                                 label { "Daily work" }
                             },
                             li {
-                                class: "task-list-item",
+                                class: "{task_item_theme}",
                                 input {
                                     class: "mr4",
                                     r#type: "checkbox",
@@ -51,7 +64,7 @@ pub fn Home(cx: Scope) -> Element {
                                 label { "Running" }
                             },
                             li {
-                                class: "task-list-item",
+                                class: "{task_item_theme}",
                                 input {
                                     class: "mr4",
                                     r#type: "checkbox",
@@ -62,7 +75,7 @@ pub fn Home(cx: Scope) -> Element {
                                 label { "Fill weekly appointments" }
                             },
                             li {
-                                class: "task-list-item",
+                                class: "{task_item_theme}",
                                 input {
                                     class: "mr4",
                                     r#type: "checkbox",
@@ -73,7 +86,7 @@ pub fn Home(cx: Scope) -> Element {
                                 label { "Get more clients" }
                             },
                             li {
-                                class: "task-list-item",
+                                class: "{task_item_theme}",
                                 input {
                                     class: "mr4",
                                     r#type: "checkbox",
@@ -94,13 +107,13 @@ pub fn Home(cx: Scope) -> Element {
                 }
 
                 section {
-                    class: "overview-section base-container w-full h-full",
+                    class: if is_dark {"overview-section base-containerdark w-full h-full"} else {"overview-section base-container  w-full h-full"},
                     div {
                         class: "overview-meta  p4 lg:p8",
                         aside {
-                            class: "border border-dotted rounded p4",
+                            class: "header-wrapper",
                             label {
-                                class: "text-xl text-orange-600 font-bold",
+                                class: "h-title-header",
                                 "Overview"
                             },
                             h2 {
@@ -118,10 +131,10 @@ pub fn Home(cx: Scope) -> Element {
                             "Overview"
                         }
                         div {
-                            class: "task-block overview flex items-center justify-center drop-shadow-2xl",
+                            class: if is_dark {"block-wrapperdark mt4 overview flex items-center justify-center"} else {"block-wrapper mt4 overview flex items-center justify-center"},
                             Link { to: "#overview",
                                 i {
-                                    class: "i-flat-color-icons:statistics text-9xl md:text-[16rem] drop-shadow-2xl"
+                                    class: "i-flat-color-icons:statistics text-9xl md:text-[16rem]"
                                 }
                             }
                         }

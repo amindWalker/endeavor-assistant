@@ -1,67 +1,61 @@
 use dioxus::prelude::*;
 use dioxus_router::Link;
 
+use crate::DarkMode;
+
 pub fn NavBar(cx: Scope) -> Element {
-    let mut state = use_state(&cx, || false);
-    let theme = if *state.get() {
-        "i-line-md:moon-twotone mr1"
+    // let state = use_state(&cx, || false);
+    let dark_mode = use_shared_state::<DarkMode>(cx).unwrap();
+    let moon_sun = if dark_mode.read().0 {
+        "i-line-md:moon-twotone"
     } else {
-        "i-line-md:moon-to-sunny-outline-transition mr1"
+        "i-line-md:moon-to-sunny-outline-transition"
     };
+
+    let is_dark = dark_mode.read().0;
+
+    let dark = if is_dark {"dark"} else {""};
 
     cx.render(rsx! {
         div {
-            class: "@apply navbar md:ml8 col-end-1 drop-shadow-xl mt4 max-w-max",
-            Link {
-                class: "flex btn-primary items-center justify-center", to: "/",
-                "Do It Manager"
-            },
-            menu {
-                class: "base-container nav-list max-w-max",
-                    Link {
-                        class: "nav-item btn-transparent flex items-center", to: "/",
-                        i { class: "i-mdi:monitor-dashboard mr1" }
-                        span {
-                            "Dashboard"
+            class: "fixed z1 col-end-6 md:col-end-1",
+            div {
+                class: "@apply navbar text-lg md:ml8 drop-shadow-xl mt4",
+                menu {
+                    class: "base-container{dark} nav-menu",
+                        Link {
+                            class: "nav-item btn-transparent", to: "/",
+                            i { class: "i-mdi:monitor-dashboard" },
                         }
-                    }
-                    Link {
-                        class: "nav-item btn-transparent flex items-center", to: "/new_task",
-                        i { class: "i-line-md:check-list-3-filled mr1" },
-                        span {
-                            "Tasks"
+                        Link {
+                            id: "tasks", class: "nav-item btn-transparent", to: "/new_task",
+                            i { class: "i-line-md:check-list-3-filled" },
+                            span { class: "hidden hover:inline", "Tasks"},
                         }
-                    }
-                    Link {
-                        class: "nav-item btn-transparent flex items-center", to: "/settings",
-                        i { class: "i-line-md:switch-filled mr1" },
-                        span {
-                            "Settings"
+                        Link {
+                            class: "nav-item btn-transparent", to: "/settings",
+                            i { class: "i-line-md:switch-filled" },
                         }
-                    }
-                    Link {
-                        class: "nav-item btn-transparent flex items-center", to: "/signin",
-                        i { class: "i-line-md:account-small mr1" },
-                        span {
-                            "Sign In"
+                        Link {
+                            class: "nav-item btn-transparent", to: "/signin",
+                            i { class: "i-line-md:account-small" },
                         }
-                    }
-                    Link {
-                        class: "nav-item btn-transparent flex items-center", to: "/signup",
-                        i { class: "i-line-md:clipboard-check mr1" },
-                        span {
-                            "Sign Up"
+                        Link {
+                            class: "nav-item btn-transparent", to: "/signup",
+                            i { class: "i-line-md:clipboard-check" },
                         }
-                    }
 
-                hr { class: "drop-shadow-md mt4" }
+                    hr { class: "drop-shadow opacity-40 mix-blend-multiply my2 md:my8" }
 
-                button {
-                    class: "cursor-pointer w-full p8 -mb2 text-orange-600 hover:brightness-150",
-                    onclick: move |_| {
-                        state.set(!state);
-                    },
-                    i { class: theme },
+                    button {
+                        class: "cursor-pointer text-orange-600 hover:brightness-150",
+                        title: "Theme",
+                        onclick: move |_| {
+                            let dark_value = !dark_mode.read().0;
+                            dark_mode.write().0 = dark_value;
+                        },
+                        i { class: moon_sun },
+                    }
                 }
             }
         }
