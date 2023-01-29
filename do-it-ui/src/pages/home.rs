@@ -134,7 +134,7 @@ pub fn Home(cx: Scope) -> Element {
                             class: if is_dark {"block-wrapperdark mt4 overview flex items-center justify-center"} else {"block-wrapper mt4 overview flex items-center justify-center"},
                             Link { to: "#overview",
                                 i {
-                                    class: "i-flat-color-icons:statistics text-9xl md:text-[16rem]"
+                                    class: "i-flat-color-icons:statistics text-9xl md:text-[16rem] saturate-50"
                                 }
                             }
                         }

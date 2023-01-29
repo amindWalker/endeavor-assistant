@@ -23,10 +23,6 @@ dioxus-web = "0.3.0"
 # shuttle-static-folder = "0.9.0"
 # tower-http = { version = "0.3.5", features = ["fs"] }
 
-# specific patch to fix tokio dependency mismatch with shuttle-service
-[patch.crates-io]
-dioxus-liveview = { path = "/home/dev/.cargo/registry/src/github.com-1ecc6299db9ec823/dioxus-liveview-0.3.0" }
-
 # optimize WASM for size
 [profile.release]
 opt-level = "z"

@@ -24,7 +24,7 @@ pub fn Settings(cx: Scope) -> Element {
                 "Settings"
             }
             div {
-                class: "grid p8 base-container{dark}",
+                class: "p8 base-container{dark}",
                 aside {
                     class: "header-wrapper",
                     label {
@@ -37,7 +37,7 @@ pub fn Settings(cx: Scope) -> Element {
                 }
 
                 section {
-                    class: "form-data p8 shadow-inner my4 rounded-xl",
+                    class: "form-data p4 md:p8 shadow-inner my4 rounded-xl",
                     form {
                         class: "grid gap4",
                         FormInput{
@@ -51,7 +51,7 @@ pub fn Settings(cx: Scope) -> Element {
                         FormTextarea{
                             oninput: move |s: FormData| biography.set(s.value),
                             placeholder: "Share details about yourself".to_string(),
-                            cols: 32
+                            cols: 24
                         }
                         FormInput {
                             oninput: move |s: FormData| email.set(s.value),

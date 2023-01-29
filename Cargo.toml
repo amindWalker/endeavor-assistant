@@ -1,5 +1,2 @@
 [workspace]
 members = ["api_server", "api_shared", "do-it-ui"]
-
-[patch.crates-io]
-dioxus-liveview = { path = "/home/dev/.cargo/registry/src/github.com-1ecc6299db9ec823/dioxus-liveview-0.3.0" }
