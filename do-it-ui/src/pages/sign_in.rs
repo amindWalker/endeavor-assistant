@@ -7,8 +7,8 @@ use dioxus_router::Link;
 use crate::{components::{FormButton, FormInput}, DarkMode};
 
 pub fn SignIn(cx: Scope) -> Element {
-    let email = use_state(&cx, String::new);
-    let password = use_state(&cx, String::new);
+    let email = use_state(cx, String::new);
+    let password = use_state(cx, String::new);
 
     let dark_mode = use_shared_state::<DarkMode>(cx).unwrap();
     let is_dark = dark_mode.read().0;

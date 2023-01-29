@@ -6,11 +6,11 @@ use dioxus::{
 use crate::{components::{FormButton, FormInput, FormTextarea}, DarkMode};
 
 pub fn Settings(cx: Scope) -> Element {
-    let profilePictureURL = use_state(&cx, String::new);
-    let name = use_state(&cx, String::new);
-    let biography = use_state(&cx, String::new);
-    let email = use_state(&cx, String::new);
-    let password = use_state(&cx, String::new);
+    let profilePictureURL = use_state(cx, String::new);
+    let name = use_state(cx, String::new);
+    let biography = use_state(cx, String::new);
+    let email = use_state(cx, String::new);
+    let password = use_state(cx, String::new);
 
     let dark_mode = use_shared_state::<DarkMode>(cx).unwrap();
     let is_dark = dark_mode.read().0;

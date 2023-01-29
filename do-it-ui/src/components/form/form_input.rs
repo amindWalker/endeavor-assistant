@@ -1,7 +1,5 @@
 use dioxus::{events::FormData, prelude::*};
 
-use crate::DarkMode;
-
 #[derive(Props)]
 pub struct FormInputProps<'a> {
     oninput: EventHandler<'a, FormData>,
