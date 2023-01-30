@@ -7,7 +7,7 @@ Business Planner
 
 ## ℹ Note
 * The main purpose of this project is to **document, evaluate and benchmark** the strong qualities of the `Rust` language by building a real-world FullStack `TypeScript` (BE+FE) application from scratch then reimplementing everything in `Rust`. I'm opensourcing a project that I've made back in 2020 using current (as of October 2022) tech and best practices from scratch because I want it to be scientifically fair for both sides. It could take a while to reimplement everything so stay tuned (:star: **star this repo if you like it**) and follow me on this huge endeavor.
-* The original `TypeScript` repository: [do-it-ts](https://github.com/amindWalker/do-it-ts)
+* The original `TypeScript` repository: [endeavor-assistant-ts](https://github.com/amindWalker/endeavor-assistant-ts)
 * The expected result from this:
     > - [x] `Rust` takes a "Data First" approach, making you take better decisions upfront while giving your IDE more information about your code (i.e. better integration with code completions) delivering incredible Developer Experience (DX) along the way.[^1]
     > - [x] There is **no inheritance** in `Rust` by default. This is another way to avoid complex structures which lead to hard-to-catch bugs in runtime. If you need inheritance you can mimic this behavior by implementing `Traits`.[^2]
@@ -24,9 +24,9 @@ Business Planner
  - [ ] Checklist
  - [ ] Charts
  - [ ] Finance Tools
- - [ ] Notepad (Markdown-like)
- - [ ] Progressive analysis (hints to improve your goals)
- - [ ] (Optional) Explore how to leverage the new Axum WebAssembly feature (introduced in v0.6) with CloudFlare Workers or any use case in which a heavy  (like Docker/Linux) could be replaced by WASM/WASI lightweight-sandbox environment.
+ - [ ] Notes tool (Markdown-like)
+ - [ ] Progressive analysis (AI hints to improve your tasks)
+ - [ ] Full Command Line support (same GUI features but on CLI)
 
 [^1]: [Data-first and data-last: a comparison](https://www.javierchavarri.com/data-first-and-data-last-a-comparison/). Javier Chávarri, May 10, 2019.
 [^2]: [Traits: Defining Shared Behavior](https://doc.rust-lang.org/book/ch10-02-traits.html). The Official Rust Programming Language Book.

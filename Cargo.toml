@@ -1,2 +1,2 @@
 [workspace]
-members = ["api_server", "api_shared", "do-it-ui"]
+members = ["api-server", "api-shared", "app-ui"]

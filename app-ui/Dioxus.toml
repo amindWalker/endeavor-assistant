@@ -1,7 +1,7 @@
 [application]
 
 # dioxus project name
-name = "do-it-ui"
+name = "app-ui"
 
 # default platfrom
 # you can also use `dioxus serve/build --platform XXX` to use other platform
@@ -17,7 +17,7 @@ asset_dir = "public"
 [web.app]
 
 # HTML title tag content
-title = "Dioxus | An elegant GUI library for Rust"
+title = "Endeavor Assistant | Assisting to meet your goals"
 
 [web.watcher]
 
