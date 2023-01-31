@@ -17,12 +17,12 @@ pub fn SignUp(cx: Scope) -> Element {
 
     cx.render(rsx! {
         div {
-            class: "@apply signup md:w-screen-sm lg:w-screen-md grid md:p8 mx6 md:mx16 md:ml32 xl:ml40 rounded-xl shadow-2xl",
+            class: "@apply signup md:w-screen-sm lg:w-screen-md md:p8 mx6 md:mx16 md:ml32 xl:ml40 rounded-xl drop-shadow-xl md:shadow-xl",
             h2 {
-                class: "text-4xl font-black text-true-gray-600 p2 mix-blend-exclusion text-center",
-                "Sign Up"
+                class: "breadcrumb",
+                "Endeavor / Sing Up"
             }
-            div {
+            section {
                 class: "signup-section",
                 div {
                     class: "form-data grid p8 base-container{dark}",
@@ -34,7 +34,7 @@ pub fn SignUp(cx: Scope) -> Element {
                         }
 
                         div {
-                            class: "error-messages invisible",
+                            class: "error-message invisible",
                             p { "That email is already taken" }
                         }
 

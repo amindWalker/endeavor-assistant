@@ -6,3 +6,6 @@ pub use nav_bar::*;
 
 mod form;
 pub use form::*;
+
+mod toast;
+pub use toast::*;

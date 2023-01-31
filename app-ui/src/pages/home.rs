@@ -3,6 +3,7 @@ use dioxus_router::Link;
 
 use crate::DarkMode;
 
+// fn(&Scoped<'_, _>) -> _
 pub fn Home(cx: Scope) -> Element {
     let dark_mode = use_shared_state::<DarkMode>(cx).unwrap();
     let is_dark = dark_mode.read().0;
@@ -13,24 +14,24 @@ pub fn Home(cx: Scope) -> Element {
 
     cx.render(rsx! {
         div {
-            class: "@apply home col-span-full md:p8 mx6 md:mx16 md:ml32 xl:ml40 rounded-xl shadow-2xl",
+            class: "home col-span-full md:p8 mx6 md:mx16 md:ml32 xl:ml40 rounded-xl drop-shadow-xl md:shadow-xl",
             h2 {
-                class: "text-4xl font-black text-true-gray-600 p2 mix-blend-exclusion text-center",
-                "Dashboard"
+                class: "breadcrumb",
+                "Endeavor / Dashboard"
             }
             div {
-                class: "grid gap4 md:gap8 place-items-center xl:grid-cols-2 w-full",
+                class: "@apply grid gap4 md:gap8 place-items-center xl:grid-cols-2 w-full",
                 section {
                     class: "task-section base-container{dark} w-full h-full",
                     div {
                         class: "task-meta p8 lg:p8",
                         aside {
                             class: "header-wrapper",
-                            label {
+                            h2 {
                                 class: "h-title-header",
                                 "Tasks"
                             },
-                            h2 {
+                            h3 {
                                 class: "h-title",
                                 "Today's latest goals"
                             }
@@ -103,7 +104,6 @@ pub fn Home(cx: Scope) -> Element {
                             }
                         }
                     }
-
                 }
 
                 section {
@@ -112,11 +112,11 @@ pub fn Home(cx: Scope) -> Element {
                         class: "overview-meta  p4 lg:p8",
                         aside {
                             class: "header-wrapper",
-                            label {
+                            h2 {
                                 class: "h-title-header",
                                 "Overview"
                             },
-                            h2 {
+                            h3 {
                                 class: "h-title",
                                 "See your progress with AI insights"
                             }
@@ -136,10 +136,9 @@ pub fn Home(cx: Scope) -> Element {
                                 i {
                                     class: "i-flat-color-icons:statistics text-9xl md:text-[16rem] saturate-50"
                                 }
-                            }
+                            },
                         }
                     }
-
                 }
             }
          }

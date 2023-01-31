@@ -16,13 +16,13 @@ pub fn SignIn(cx: Scope) -> Element {
 
     cx.render(rsx! {
         div {
-            class: "@apply signin md:w-screen-sm lg:w-screen-md grid md:p8 mx6 md:mx16 md:ml32 xl:ml40 rounded-xl shadow-2xl",
+            class: "@apply signin md:w-screen-sm lg:w-screen-md md:p8 mx6 md:mx16 md:ml32 xl:ml40 rounded-xl drop-shadow-xl md:shadow-xl",
             h2 {
-                class: "text-4xl font-black text-true-gray-600 p2 mix-blend-exclusion text-center",
-                "Sign In"
+                class: "bg-white bg-opacity-50 leading-tight rounded-lg p4 mb4 md:mb8 mix-blend-exclusion",
+                "Endeavor / Sign In"
             }
-            div {
-                class: "signin-section grid p8 base-container{dark}",
+            section {
+                class: "signin-section base-container{dark} grid p8",
                 div {
                     class: "form-data header-wrapper",
                     p {
@@ -31,7 +31,7 @@ pub fn SignIn(cx: Scope) -> Element {
                     }
 
                     div {
-                        class: "error-messages invisible",
+                        class: "error-message invisible",
                         // TODO: toast message or message over the input
                         p { "Invalid credentials" }
                     }

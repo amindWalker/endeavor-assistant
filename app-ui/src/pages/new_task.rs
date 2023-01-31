@@ -18,16 +18,16 @@ pub fn NewTask(cx: Scope) -> Element {
 
     cx.render(rsx! {
         div {
-            class: "@apply tasks md:w-screen-sm lg:w-screen-md md:p8 mx6 md:mx16 md:ml32 xl:ml40 rounded-xl shadow-2xl",
+            class: "@apply tasks md:w-screen-sm lg:w-screen-md md:p8 mx6 md:mx16 md:ml32 xl:ml40 rounded-xl drop-shadow-xl md:shadow-xl",
             h2 {
-                class: "text-4xl font-black text-true-gray-600 p2 mix-blend-exclusion text-center",
-                "Task Editor"
+                class: "breadcrumb",
+                "Endeavor / Task Editor"
             }
             div {
                 class: "p8 base-container{dark}",
                 aside {
                     class: "header-wrapper",
-                    label {
+                    h2 {
                         class: "h-title-header", "Create Task"
                     },
                     p {
@@ -37,7 +37,7 @@ pub fn NewTask(cx: Scope) -> Element {
                 }
 
                 section {
-                    class: "form-data p4 md:p8 shadow-inner my4 rounded-xl",
+                    class: "form-data p4 md:p8 my4 rounded-xl",
                     form {
                         class: "grid gap4",
                         FormInput {
