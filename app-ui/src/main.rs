@@ -26,13 +26,11 @@ fn App(cx: Scope) -> Element {
     let is_dark = dark_mode.read().0;
 
     cx.render(rsx!(
-        Router {
-            main {
-                class: if is_dark {"main-containerdark"} else {"main-container"},
-                // NavBar {}
-                // Toast {}
-                div {
-                    class: "grid",
+        Router { 
+            main { class: if is_dark { "main-containerdark" } else { "main-container" },
+                NavBar {}
+                Toast {}
+                div { class: "grid",
                     Route { to: "/", Home {} }
                     Route { to: "/new_task", NewTask {} }
                     Route { to: "/settings", Settings {} }

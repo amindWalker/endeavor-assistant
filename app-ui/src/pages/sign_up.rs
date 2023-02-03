@@ -16,38 +16,20 @@ pub fn SignUp(cx: Scope) -> Element {
     let dark = if is_dark {"dark"} else {""};
 
     cx.render(rsx! {
-        div {
-            class: "@apply signup md:w-screen-sm lg:w-screen-md md:p8 mx6 md:mx16 md:ml32 xl:ml40 rounded-xl drop-shadow-xl md:shadow-xl",
-            h2 {
-                class: "breadcrumb",
-                "Endeavor / Sing Up"
-            }
-            section {
-                class: "signup-section",
-                div {
-                    class: "form-data grid p8 base-container{dark}",
-                    div {
-                        class: "form-data header-wrapper",
-                        p {
-                            class: "btn-transparent",
+        div { class: "@apply signup md:w-screen-sm lg:w-screen-md md:p8 mx6 md:mx16 md:ml32 xl:ml40 rounded-xl drop-shadow-xl md:shadow-xl",
+            h2 { class: "breadcrumb", "Endeavor / Sing Up" }
+            section { class: "signup-section",
+                div { class: "form-data grid p8 base-container{dark}",
+                    div { class: "form-data header-wrapper",
+                        p { class: "btn-transparent",
                             Link { to: "/signin", "Have an account?" }
                         }
 
-                        div {
-                            class: "error-message invisible",
-                            p { "That email is already taken" }
-                        }
+                        div { class: "error-message invisible", p { "That email is already taken" } }
 
-                        form {
-                            class: "grid gap4",
-                            FormInput {
-                                oninput: move |s: FormData| name.set(s.value),
-                                placeholder: "Your Name".to_string()
-                            }
-                            FormInput {
-                                oninput: move |s: FormData| email.set(s.value),
-                                placeholder: "Email".to_string()
-                            }
+                        form { class: "grid gap4",
+                            FormInput { oninput: move |s: FormData| name.set(s.value), placeholder: "Your Name".to_string() }
+                            FormInput { oninput: move |s: FormData| email.set(s.value), placeholder: "Email".to_string() }
                             FormInput {
                                 oninput: move |s: FormData| password.set(s.value),
                                 placeholder: "Password".to_string()

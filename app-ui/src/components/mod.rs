@@ -9,3 +9,6 @@ pub use form::*;
 
 mod toast;
 pub use toast::*;
+
+mod chart;
+pub use chart::*;

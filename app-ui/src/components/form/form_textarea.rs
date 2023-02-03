@@ -19,8 +19,7 @@ pub fn FormTextarea<'a>(cx: Scope<'a, FormTextareaProps<'a>>) -> Element {
     let cols = cx.props.cols.unwrap_or(8);
     let place_holder = cx.props.placeholder.clone().unwrap_or_default();
     cx.render(rsx! {
-        fieldset {
-            class: "@apply form-group",
+        fieldset { class: "@apply form-group",
             textarea {
                 class: "list-itemdark bg-white bg-opacity-10",
                 oninput: move |e| cx.props.oninput.call(e.data.as_ref().clone()),
