@@ -12,6 +12,9 @@ dioxus-router = "0.3.0"
 log = "0.4.17"
 # Dioxus Web with WASM and all available Web APIs
 dioxus-web = "0.3.0"
+web-sys = { version = "*", features = ["HtmlCanvasElement", "WebGl2RenderingContext", "CanvasRenderingContext2d"]}
+wasm-bindgen = "*"
+js-sys = "0.3.61"
 # console_error_panic_hook = "0.1.7"
 # wasm-logger = "0.2.0"
 # Dioxus LiveView with Axum and WebSockets but limited Web APIs

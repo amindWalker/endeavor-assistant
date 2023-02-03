@@ -1,16 +1,19 @@
 use dioxus::prelude::*;
 use dioxus_router::Link;
 
-use crate::{DarkMode, components::Chart};
+use crate::{components::Chart, DarkMode};
 
-// fn(&Scoped<'_, _>) -> _
 pub fn Home(cx: Scope) -> Element {
     let dark_mode = use_shared_state::<DarkMode>(cx).unwrap();
     let is_dark = dark_mode.read().0;
 
-    let dark = if is_dark {"dark"} else {""};
+    let dark = if is_dark { "dark" } else { "" };
 
-    let task_item_theme = if is_dark {"list-itemdark"} else {"list-item"};
+    let task_item_theme = if is_dark {
+        "list-itemdark"
+    } else {
+        "list-item"
+    };
 
     cx.render(rsx! {
         div { class: "home col-span-full md:p8 mx6 md:mx16 md:ml32 xl:ml40 rounded-xl drop-shadow-xl md:shadow-xl",
@@ -25,53 +28,23 @@ pub fn Home(cx: Scope) -> Element {
                         }
                         ul { class: if is_dark { "block-wrapperdark mt4" } else { "block-wrapper mt4" },
                             li { class: "{task_item_theme}",
-                                input {
-                                    class: "mr4",
-                                    r#type: "checkbox",
-                                    id: "tasks",
-                                    name: "tasks",
-                                    checked: true
-                                }
+                                input { class: "mr4", r#type: "checkbox", checked: true }
                                 label { "Daily work" }
                             }
                             li { class: "{task_item_theme}",
-                                input {
-                                    class: "mr4",
-                                    r#type: "checkbox",
-                                    id: "tasks",
-                                    name: "tasks",
-                                    checked: true
-                                }
+                                input { class: "mr4", r#type: "checkbox", checked: true }
                                 label { "Running" }
                             }
                             li { class: "{task_item_theme}",
-                                input {
-                                    class: "mr4",
-                                    r#type: "checkbox",
-                                    id: "tasks",
-                                    name: "tasks",
-                                    checked: true
-                                }
+                                input { class: "mr4", r#type: "checkbox", checked: true }
                                 label { "Fill weekly appointments" }
                             }
                             li { class: "{task_item_theme}",
-                                input {
-                                    class: "mr4",
-                                    r#type: "checkbox",
-                                    id: "tasks",
-                                    name: "tasks",
-                                    checked: true
-                                }
+                                input { class: "mr4", r#type: "checkbox", checked: true }
                                 label { "Get more clients" }
                             }
                             li { class: "{task_item_theme}",
-                                input {
-                                    class: "mr4",
-                                    r#type: "checkbox",
-                                    id: "tasks",
-                                    name: "tasks",
-                                    checked: true
-                                }
+                                input { class: "mr4", r#type: "checkbox", checked: true }
                                 label { "Rinse and repeat" }
                             }
                             Link { class: "btn-primary flex items-center justify-center", to: "/new_task",
@@ -87,7 +60,7 @@ pub fn Home(cx: Scope) -> Element {
 } else {
     "overview-section base-container  w-full h-full"
 },
-                    div { class: "overview-meta  p4 lg:p8",
+                    div { class: "overview-meta max-w-full p4 lg:p8",
                         aside { class: "header-wrapper",
                             h2 { class: "h-title-header", "Overview" }
                             h3 { class: "h-title", "See your progress with AI insights" }
@@ -100,11 +73,12 @@ pub fn Home(cx: Scope) -> Element {
                             "Overview"
                         }
                         div { class: if is_dark {
-    "block-wrapperdark mt4 overview flex items-center justify-center"
+    "overview block-wrapperdark mt4 max-w-full"
 } else {
-    "block-wrapper mt4 overview flex items-center justify-center"
+    "overview block-wrapper mt4 max-w-full"
 },
-                            Link { to: "#overview", i { class: "i-flat-color-icons:statistics text-9xl md:text-[16rem] saturate-50" } }
+                            // Link { to: "#overview", i { class: "i-flat-color-icons:statistics text-9xl md:text-[16rem] saturate-50" } }
+                            Chart {}
                         }
                     }
                 }
