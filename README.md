@@ -4,11 +4,9 @@
 
 </div>
 
-> **Note**
-> * The main purpose of this project is to **document, evaluate and benchmark** the strong qualities of the `Rust` language by building a real-world FullStack `TypeScript` (BE+FE) application from scratch and then reimplementing everything in `Rust` and `WASM`. I'm opensourcing a project that I've made back in 2020 using current (as of October 2022) tech and best practices from scratch because I want it to be scientifically fair for both sides. It might take a while to reimplement everything so stay tuned (:star: **star this repo if you like it**) and follow me on this huge endeavor.
-* The original `TypeScript` repository: [endeavor-assistant-ts](https://github.com/amindWalker/endeavor-assistant-ts)
-
-## The Expected Result
+> [!NOTE]
+> The main purpose of this project is to **document, evaluate and benchmark** the strengths of the `Rust` programming language. This will be achieved by building a real-world full-stack TypeScript (back-end and front-end) application from scratch, and then reimplementing everything in `Rust` and `WebAssembly` (WASM). I am open-sourcing a project that I created in 2020 using the current (as of October 2022) technology and best practices, because I want the comparison to be scientifically fair. It will take some time to reimplement everything, so stay tuned! Star this repository if you like it and follow me on this huge endeavour.
+> * The original `TypeScript` repository: [endeavor-assistant-ts](https://github.com/amindWalker/endeavor-assistant-ts)
 
 ## The Expected Result
 - [x] Rust makes most of the code base almost bug-free, with the exception of logic bugs (obviously, a code base can still contain logic bugs). [^0]
@@ -24,14 +22,8 @@
 - [x] First-class Tests, Documentation and Packaging (meaning less third-party dependencies and fragmentation) via Cargo and [crates.io](https://crates.io/).[^11]
 - [x] Best-in-class compiler messages with inline manuals integrated with your IDE of choice.[^12]
 
-## [FEATURES]()
- - [ ] Appointments
- - [ ] Checklist
- - [ ] Charts
- - [ ] Finance Tools
- - [ ] Notes tool (Markdown-like)
- - [ ] Progressive analysis (AI hints to improve your tasks)
- - [ ] Full Command Line support (same GUI features but on CLI)
+## Final result
+**Rust met all expectations**, requiring minimal effort from those with experience in software engineering in other languages. Once you have learned the fundamentals of the Rust language, you will find the refactoring or reimplementing code is straightforward, thanks to the compiler messages.
 
 [^0]: [Why is Memory Safety Without GC a Big Deal in RUST?](https://medium.com/@humble_bee/why-is-memory-safety-without-gc-a-big-deal-in-rust-41f6bdd5902f), [C++ Memory Bugs Prompt Microsoft to Eye Rust Instead](https://visualstudiomagazine.com/articles/2019/07/18/microsoft-eyes-rust.aspx). David Ramel07/18/2019. [Google, Microsoft Take Refuge in Rust Language's Better Security](https://www.darkreading.com/application-security/google-microsoft-take-refuge-in-rust-languages-better-security). Robert Lemos, Contributing Writer, August 4, 2023.
 [^1]: [Data-first and data-last: a comparison](https://www.javierchavarri.com/data-first-and-data-last-a-comparison/). Javier Chávarri, May 10, 2019.
